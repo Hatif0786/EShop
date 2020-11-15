@@ -3,12 +3,26 @@
 
 
     {% block content%}
+<div class="container-fluid mt-4">
+  <div class="row">
 
-    <div class="container-fluid mt-4 mx-auto">
-    <div class="row mx-auto">
+    <!--filter-->
+    <div class="col-lg-3">
+      <div class="list-group">
+        <a href="/" class="list-group-item list-group-item-action active">All Products</a>
+        {% for category in Categories %}
+        <a href="/?category={{category.id}}" class="list-group-item list-group-item-action">{{category.name}}</a>
+        {% endfor %}
+      </div>
+    </div>
+    <!--all-products-->
+
+
+    <div id="products" class="col-lg-9">
+      <div class="row mx-auto">
     {% for x in HProducts %}
-    <div class="card mb-3 mr-4 " style="width: 18rem;">
-      <img src="{{x.image.url}}" class="card-img-top" alt="...">
+       <div class="card mb-3 mr-3" style="width: 18rem;">
+        <img src="{{x.image.url}}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{x.name}}</h5>
           <p class="card-text"><b>{{x.price}}</b></p>
@@ -18,5 +32,7 @@
     {% endfor %} 
     </div>
     </div>
+  </div>
+</div>
 
     {% endblock %}
